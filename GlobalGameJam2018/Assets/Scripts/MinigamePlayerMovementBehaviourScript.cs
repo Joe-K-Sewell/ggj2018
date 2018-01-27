@@ -7,7 +7,10 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
     public float HorizontalVelocity;
     public float VerticalVelocity;
 
-    public Rigidbody2D _rigidBody2D;
+    public float HorizontalBound;
+    public float VerticalBound;
+
+    private Rigidbody2D _rigidBody2D;
 
 	// Use this for initialization
 	void Start () {
@@ -20,5 +23,10 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
         float vertical = VerticalVelocity * Input.GetAxis("Vertical");
         
         _rigidBody2D.velocity = new Vector2(horizontal, vertical);
-	}
+
+        var newX = Mathf.Clamp(_rigidBody2D.position.x, -HorizontalBound, +HorizontalBound);
+        var newY = Mathf.Clamp(_rigidBody2D.position.y, -VerticalBound, +VerticalBound);
+
+        _rigidBody2D.position = new Vector2(newX, newY);
+    }
 }

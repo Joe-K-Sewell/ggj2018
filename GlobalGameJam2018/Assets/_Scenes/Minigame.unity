@@ -282,7 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalVelocity: 6
   VerticalVelocity: 6
-  _rigidBody2D: {fileID: 0}
+  HorizontalBound: 5
+  VerticalBound: 5
 --- !u!50 &1294034246
 Rigidbody2D:
   serializedVersion: 4
