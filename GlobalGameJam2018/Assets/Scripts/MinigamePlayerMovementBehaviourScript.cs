@@ -24,7 +24,7 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (transform.right);
+		//Debug.Log (transform.right);
         float horizontal = HorizontalVelocity * Input.GetAxis("Horizontal");
         float vertical = VerticalVelocity * Input.GetAxis("Vertical");
 

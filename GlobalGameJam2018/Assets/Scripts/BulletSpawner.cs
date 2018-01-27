@@ -31,7 +31,7 @@ public class BulletSpawner : MonoBehaviour {
 
 	void FireBulletRandomly()
 	{
-		randomSpawnerSelected = Random.Range (0, 8);
+		randomSpawnerSelected = Random.Range (0, 16);
 
 
 		Instantiate (bulletPrefab, bulletSpawns[randomSpawnerSelected].position,Quaternion.identity ,null);
