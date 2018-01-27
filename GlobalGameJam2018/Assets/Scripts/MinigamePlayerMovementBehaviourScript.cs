@@ -23,10 +23,5 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
         float vertical = VerticalVelocity * Input.GetAxis("Vertical");
         
         _rigidBody2D.velocity = new Vector2(horizontal, vertical);
-
-        var newX = Mathf.Clamp(_rigidBody2D.position.x, -HorizontalBound, +HorizontalBound);
-        var newY = Mathf.Clamp(_rigidBody2D.position.y, -VerticalBound, +VerticalBound);
-
-        _rigidBody2D.position = new Vector2(newX, newY);
     }
 }
