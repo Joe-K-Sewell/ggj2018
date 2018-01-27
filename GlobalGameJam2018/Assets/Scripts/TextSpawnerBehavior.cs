@@ -74,8 +74,11 @@ public class TextSpawnerBehavior : MonoBehaviour {
             var gameObj = Instantiate(TextMessagePrefab);
             gameObj.transform.SetParent(gameObject.transform);
 
-            var textComponent = gameObj.GetComponent<TMP_Text>();
-            textComponent.SetText(message.RawText);
+            message.Text = gameObj.GetComponent<TMP_Text>();
+            message.Text.SetText(message.RawText);
+            message.Text.alignment = message.Side == Side.LEFT
+                ? TextAlignmentOptions.Left
+                : TextAlignmentOptions.Right;
 
             message.Object = gameObj;
         }
