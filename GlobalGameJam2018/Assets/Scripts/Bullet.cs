@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+	float lifeTime = 3f;
+
 
 	Rigidbody2D rb2d;
 	// Use this for initialization
@@ -17,5 +19,11 @@ public class Bullet : MonoBehaviour {
 	{
 		//Move Up
 		rb2d.velocity = new Vector2 (0, 5);
+		lifeTime -= Time.deltaTime;
+
+		if (lifeTime <= 0) 
+		{
+			Destroy (gameObject);
+		}
 	}
 }
