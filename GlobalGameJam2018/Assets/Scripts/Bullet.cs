@@ -18,12 +18,22 @@ public class Bullet : MonoBehaviour {
 	void Update () 
 	{
 		//Move Up
-		rb2d.velocity = new Vector2 (0, 5);
+		//rb2d.velocity = new Vector2 (0, 5);
+		transform.Translate(0,4 *Time.deltaTime ,0);
 		lifeTime -= Time.deltaTime;
 
 		if (lifeTime <= 0) 
 		{
 			Destroy (gameObject);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if(col.gameObject.CompareTag("Player"))
+			{
+			Destroy (gameObject);
+				FindObjectOfType<MinigamePlayerMovementBehaviourScript> ().TakeBulletHit ();
+			}
 	}
 }
