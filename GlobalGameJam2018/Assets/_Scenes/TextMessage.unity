@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextMessagePrefab: {fileID: 1907425687232270, guid: 6273c39064282c34fbfa1e475e9bf6e2,
     type: 2}
+  FixedOffset: 300
 --- !u!1 &2135954909
 GameObject:
   m_ObjectHideFlags: 0

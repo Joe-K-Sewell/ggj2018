@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TextSpawnerBehavior : MonoBehaviour {
 
     public GameObject TextMessagePrefab;
+    public float FixedOffset;
     
     private enum Side { LEFT, RIGHT }
     private class TextMessageInfo
     {
         public Side Side;
-        public string Text;
+        public string RawText;
         public GameObject Object;
+        public TMP_Text Text;
     }
 
     private List<TextMessageInfo> _messages = new List<TextMessageInfo>
@@ -19,47 +22,47 @@ public class TextSpawnerBehavior : MonoBehaviour {
         new TextMessageInfo
         {
             Side = Side.LEFT,
-            Text = "Are you a real villain?",
+            RawText = "Are you a real villain?",
         },
         new TextMessageInfo
         {
             Side = Side.RIGHT,
-            Text = "Well, technically, uh, nah."
+            RawText = "Well, technically, uh, nah."
         },
         new TextMessageInfo
         {
             Side = Side.LEFT,
-            Text = "Have you ever caught a good guy like a, like a real superhero?"
+            RawText = "Have you ever caught a good guy like a, like a real superhero?"
         },
         new TextMessageInfo
         {
             Side = Side.RIGHT,
-            Text = "Nah."
+            RawText = "Nah."
         },
         new TextMessageInfo
         {
             Side = Side.RIGHT,
-            Text = "*shakes head*"
+            RawText = "*shakes head*"
         },
         new TextMessageInfo
         {
             Side = Side.LEFT,
-            Text = "Have you ever tried a disguise?"
+            RawText = "Have you ever tried a disguise?"
         },
         new TextMessageInfo
         {
             Side = Side.RIGHT,
-            Text = "*shakes head again*"
+            RawText = "*shakes head again*"
         },
         new TextMessageInfo
         {
             Side = Side.RIGHT,
-            Text = "Nah, nah..."
+            RawText = "Nah, nah..."
         },
         new TextMessageInfo
         {
             Side = Side.LEFT,
-            Text = "Alright! I can see, that I will have to teach you, how to be villains!"
+            RawText = "Alright! I can see, that I will have to teach you, how to be villains!"
         },
     };
     private int _currentMessageIndex = -1;
@@ -71,8 +74,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
             var gameObj = Instantiate(TextMessagePrefab);
             gameObj.transform.SetParent(gameObject.transform);
 
-            var textComponent = gameObj.GetComponent<TMPro.TMP_Text>();
-            textComponent.SetText(message.Text);
+            var textComponent = gameObj.GetComponent<TMP_Text>();
+            textComponent.SetText(message.RawText);
 
             message.Object = gameObj;
         }
@@ -95,10 +98,18 @@ public class TextSpawnerBehavior : MonoBehaviour {
         if (oldMessageIndex == _currentMessageIndex) { return; }
         Debug.LogFormat("{0} -> {1}", oldMessageIndex, _currentMessageIndex);
 
-        if (oldMessageIndex >= 0)
+        float nextDistance = FixedOffset;
+        for (int i = _messages.Count - 1; i >= 0; i--)
         {
-            _messages[oldMessageIndex].Object.transform.position = new Vector3(0, 0);
+            if (i > _currentMessageIndex)
+            {
+                _messages[i].Object.transform.position = new Vector3(0, 0);
+            }
+            else
+            {
+                _messages[i].Object.transform.position = new Vector3(0, nextDistance);
+                nextDistance += FixedOffset;
+            }
         }
-        _messages[_currentMessageIndex].Object.transform.position = new Vector3(0, 300);
     }
 }
