@@ -69,14 +69,27 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        var parentCanvasRect = GetComponentInParent<RectTransform>();
+
+        var spawnerRect = GetComponent<RectTransform>();
+        spawnerRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, 1);
+
         foreach (var message in _messages)
         {
+            var leftSide = message.Side == Side.LEFT;
+
             var gameObj = Instantiate(TextMessagePrefab);
             gameObj.transform.SetParent(gameObject.transform);
 
+            var rectTransform = gameObj.GetComponent<RectTransform>();
+            var anchorNum = leftSide ? 0 : 1;
+            rectTransform.anchorMin = new Vector2(anchorNum, 1);
+            rectTransform.anchorMax = new Vector2(anchorNum, 1);
+            rectTransform.pivot = new Vector2(anchorNum, 1);
+            
             message.Text = gameObj.GetComponent<TMP_Text>();
             message.Text.SetText(message.RawText);
-            message.Text.alignment = message.Side == Side.LEFT
+            message.Text.alignment = leftSide
                 ? TextAlignmentOptions.Left
                 : TextAlignmentOptions.Right;
 
@@ -104,13 +117,15 @@ public class TextSpawnerBehavior : MonoBehaviour {
         float nextDistance = FixedOffset;
         for (int i = _messages.Count - 1; i >= 0; i--)
         {
+            var transform = _messages[i].Object.transform;
+            var xPos = transform.localPosition.x;
             if (i > _currentMessageIndex)
             {
-                _messages[i].Object.transform.position = new Vector3(0, 0);
+                transform.localPosition = new Vector3(xPos, 0);
             }
             else
             {
-                _messages[i].Object.transform.position = new Vector3(0, nextDistance);
+                transform.localPosition = new Vector3(xPos, nextDistance);
                 nextDistance += FixedOffset;
             }
         }
