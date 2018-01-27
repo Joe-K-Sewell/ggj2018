@@ -27,6 +27,9 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
 		//Debug.Log (transform.right);
         float horizontal = HorizontalVelocity * Input.GetAxis("Horizontal");
         float vertical = VerticalVelocity * Input.GetAxis("Vertical");
+        
+		transform.localPosition += new Vector3(horizontal*Time.deltaTime, vertical*Time.deltaTime, 0);
+        //_rigidBody2D.velocity = new Vector2(horizontal, vertical);
 
 		if (isHit) 
 		{
