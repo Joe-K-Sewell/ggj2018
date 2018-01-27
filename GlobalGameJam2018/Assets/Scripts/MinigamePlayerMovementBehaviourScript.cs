@@ -22,6 +22,7 @@ public class MinigamePlayerMovementBehaviourScript : MonoBehaviour {
         float horizontal = HorizontalVelocity * Input.GetAxis("Horizontal");
         float vertical = VerticalVelocity * Input.GetAxis("Vertical");
         
-        _rigidBody2D.velocity = new Vector2(horizontal, vertical);
+		transform.localPosition += new Vector3(horizontal*Time.deltaTime, vertical*Time.deltaTime, 0);
+        //_rigidBody2D.velocity = new Vector2(horizontal, vertical);
     }
 }
