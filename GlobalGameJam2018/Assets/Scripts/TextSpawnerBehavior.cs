@@ -7,6 +7,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
     public GameObject TextMessagePrefab;
     public float FixedOffset;
+    public float ScrollUnitsPerSecond;
     public TextAsset ConversationScript;
     
     private enum Side { LEFT, RIGHT }
@@ -19,55 +20,11 @@ public class TextSpawnerBehavior : MonoBehaviour {
     }
     
     private List<TextMessageInfo> _messages;
-    // = new List<TextMessageInfo>
-    //{
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.LEFT,
-    //        RawText = "Are you a real villain?",
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.RIGHT,
-    //        RawText = "Well, technically, uh, nah."
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.LEFT,
-    //        RawText = "Have you ever caught a good guy like a, like a real superhero?"
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.RIGHT,
-    //        RawText = "Nah."
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.RIGHT,
-    //        RawText = "*shakes head*"
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.LEFT,
-    //        RawText = "Have you ever tried a disguise?"
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.RIGHT,
-    //        RawText = "*shakes head again*"
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.RIGHT,
-    //        RawText = "Nah, nah..."
-    //    },
-    //    new TextMessageInfo
-    //    {
-    //        Side = Side.LEFT,
-    //        RawText = "Alright! I can see, that I will have to teach you, how to be villains!"
-    //    },
-    //};
-    private int _currentMessageIndex = -1;
+
+    private enum ScrollState { NONE, TEXT_UP, TEXT_DOWN }
+    private ScrollState _scrollState = ScrollState.TEXT_UP;
+    /// <summary> Next index if currently scrolling, otherwise current index </summary>
+    private int _currentMessageIndex = 0;
     
     private void ReadConversationScript()
     {
@@ -112,18 +69,16 @@ public class TextSpawnerBehavior : MonoBehaviour {
         var spawnerRect = GetComponent<RectTransform>();
         spawnerRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, 1);
 
-        foreach (var message in _messages)
+        var startingY = 0f;
+        for (int i = 0; i < _messages.Count; i++)
         {
+            var message = _messages[i];
             var leftSide = message.Side == Side.LEFT;
 
             var gameObj = Instantiate(TextMessagePrefab);
             gameObj.transform.SetParent(gameObject.transform);
-
-            var rectTransform = gameObj.GetComponent<RectTransform>();
-            var anchorNum = leftSide ? 0 : 1;
-            rectTransform.anchorMin = new Vector2(anchorNum, 1);
-            rectTransform.anchorMax = new Vector2(anchorNum, 1);
-            rectTransform.pivot = new Vector2(anchorNum, 1);
+            gameObj.transform.localPosition = new Vector3(gameObj.transform.localPosition.x, startingY);
+            startingY -= FixedOffset;
             
             message.Text = gameObj.GetComponent<TMP_Text>();
             message.Text.SetText(message.RawText);
@@ -137,35 +92,9 @@ public class TextSpawnerBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        var oldMessageIndex = _currentMessageIndex;
-		if (Input.GetKeyDown(KeyCode.S))
-        {
-            _currentMessageIndex++;
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            _currentMessageIndex--;
-        }
-        _currentMessageIndex = System.Math.Max(0, _currentMessageIndex);
-        _currentMessageIndex = System.Math.Min(_messages.Count - 1, _currentMessageIndex);
-
-        if (oldMessageIndex == _currentMessageIndex) { return; }
-        Debug.LogFormat("{0} -> {1}", oldMessageIndex, _currentMessageIndex);
-
-        float nextDistance = FixedOffset;
-        for (int i = _messages.Count - 1; i >= 0; i--)
-        {
-            var transform = _messages[i].Object.transform;
-            var xPos = transform.localPosition.x;
-            if (i > _currentMessageIndex)
-            {
-                transform.localPosition = new Vector3(xPos, 0);
-            }
-            else
-            {
-                transform.localPosition = new Vector3(xPos, nextDistance);
-                nextDistance += FixedOffset;
-            }
-        }
+        var distanceToApply = ScrollUnitsPerSecond * Time.deltaTime;
+        var yVal = transform.localPosition.y;
+        yVal += distanceToApply * Input.GetAxis("Vertical");
+        transform.localPosition = new Vector3(transform.localPosition.x, yVal);
     }
 }
