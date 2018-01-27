@@ -7,6 +7,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
     public GameObject TextMessagePrefab;
     public float FixedOffset;
+    public TextAsset ConversationScript;
     
     private enum Side { LEFT, RIGHT }
     private class TextMessageInfo
@@ -16,59 +17,96 @@ public class TextSpawnerBehavior : MonoBehaviour {
         public GameObject Object;
         public TMP_Text Text;
     }
-
-    private List<TextMessageInfo> _messages = new List<TextMessageInfo>
-    {
-        new TextMessageInfo
-        {
-            Side = Side.LEFT,
-            RawText = "Are you a real villain?",
-        },
-        new TextMessageInfo
-        {
-            Side = Side.RIGHT,
-            RawText = "Well, technically, uh, nah."
-        },
-        new TextMessageInfo
-        {
-            Side = Side.LEFT,
-            RawText = "Have you ever caught a good guy like a, like a real superhero?"
-        },
-        new TextMessageInfo
-        {
-            Side = Side.RIGHT,
-            RawText = "Nah."
-        },
-        new TextMessageInfo
-        {
-            Side = Side.RIGHT,
-            RawText = "*shakes head*"
-        },
-        new TextMessageInfo
-        {
-            Side = Side.LEFT,
-            RawText = "Have you ever tried a disguise?"
-        },
-        new TextMessageInfo
-        {
-            Side = Side.RIGHT,
-            RawText = "*shakes head again*"
-        },
-        new TextMessageInfo
-        {
-            Side = Side.RIGHT,
-            RawText = "Nah, nah..."
-        },
-        new TextMessageInfo
-        {
-            Side = Side.LEFT,
-            RawText = "Alright! I can see, that I will have to teach you, how to be villains!"
-        },
-    };
+    
+    private List<TextMessageInfo> _messages;
+    // = new List<TextMessageInfo>
+    //{
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.LEFT,
+    //        RawText = "Are you a real villain?",
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.RIGHT,
+    //        RawText = "Well, technically, uh, nah."
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.LEFT,
+    //        RawText = "Have you ever caught a good guy like a, like a real superhero?"
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.RIGHT,
+    //        RawText = "Nah."
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.RIGHT,
+    //        RawText = "*shakes head*"
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.LEFT,
+    //        RawText = "Have you ever tried a disguise?"
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.RIGHT,
+    //        RawText = "*shakes head again*"
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.RIGHT,
+    //        RawText = "Nah, nah..."
+    //    },
+    //    new TextMessageInfo
+    //    {
+    //        Side = Side.LEFT,
+    //        RawText = "Alright! I can see, that I will have to teach you, how to be villains!"
+    //    },
+    //};
     private int _currentMessageIndex = -1;
+    
+    private void ReadConversationScript()
+    {
+        _messages = new List<TextMessageInfo>();
+        
+        foreach (var line in ConversationScript.text.Split('\n'))
+        {
+            var cleanedLine = line.TrimEnd(' ', '\r');
+            if (string.IsNullOrEmpty(cleanedLine)) { continue; }
+
+            var firstColon = cleanedLine.IndexOf(':');
+            var header = cleanedLine.Substring(0, firstColon).TrimEnd(' ');
+            var body = cleanedLine.Substring(firstColon + 1).TrimStart(' ');
+
+            Side side;
+            switch (header[0])
+            {
+                case 'L':
+                    side = Side.LEFT;
+                    break;
+                case 'R':
+                    side = Side.RIGHT;
+                    break;
+                default:
+                    throw new System.Exception("Unrecognized: " + header[0]);
+            }
+
+            _messages.Add(new TextMessageInfo
+            {
+                Side = side,
+                RawText = body
+            });
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
+        ReadConversationScript();
+
         var parentCanvasRect = GetComponentInParent<RectTransform>();
 
         var spawnerRect = GetComponent<RectTransform>();

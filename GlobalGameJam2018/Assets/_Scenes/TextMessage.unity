@@ -304,6 +304,7 @@ MonoBehaviour:
   TextMessagePrefab: {fileID: 1907425687232270, guid: 6273c39064282c34fbfa1e475e9bf6e2,
     type: 2}
   FixedOffset: 150
+  ConversationScript: {fileID: 4900000, guid: f87e6ae0212781344be96730bed9b5f7, type: 3}
 --- !u!1 &2135954909
 GameObject:
   m_ObjectHideFlags: 0
