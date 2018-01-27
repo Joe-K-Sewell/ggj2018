@@ -95,7 +95,10 @@ public class TextSpawnerBehavior : MonoBehaviour {
         if (oldMessageIndex == _currentMessageIndex) { return; }
         Debug.LogFormat("{0} -> {1}", oldMessageIndex, _currentMessageIndex);
 
-        _messages[oldMessageIndex].Object.transform.position = new Vector3(0, 0);
+        if (oldMessageIndex >= 0)
+        {
+            _messages[oldMessageIndex].Object.transform.position = new Vector3(0, 0);
+        }
         _messages[_currentMessageIndex].Object.transform.position = new Vector3(0, 300);
     }
 }
