@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,16 +17,14 @@ public class TextSpawnerBehavior : MonoBehaviour {
         public Side Side;
         public string RawText;
         public GameObject Object;
+        public RectTransform RectTransform;
         public TMP_Text Text;
     }
     
     private List<TextMessageInfo> _messages;
 
-    private enum ScrollState { NONE, TEXT_UP, TEXT_DOWN }
-    private ScrollState _scrollState = ScrollState.TEXT_UP;
-    /// <summary> Next index if currently scrolling, otherwise current index </summary>
-    private int _currentMessageIndex = 0;
-    
+    private RectTransform _myRect;
+
     private void ReadConversationScript()
     {
         _messages = new List<TextMessageInfo>();
@@ -63,38 +62,55 @@ public class TextSpawnerBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ReadConversationScript();
-
+        
         var parentCanvasRect = GetComponentInParent<RectTransform>();
 
-        var spawnerRect = GetComponent<RectTransform>();
-        spawnerRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, 1);
+        _myRect = GetComponent<RectTransform>();
+        _myRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, _messages.Count * FixedOffset);
 
         var startingY = 0f;
-        for (int i = 0; i < _messages.Count; i++)
+        for (int i = _messages.Count - 1; i >= 0; i--)
         {
             var message = _messages[i];
             var leftSide = message.Side == Side.LEFT;
 
+            startingY += FixedOffset;
+
             var gameObj = Instantiate(TextMessagePrefab);
             gameObj.transform.SetParent(gameObject.transform);
             gameObj.transform.localPosition = new Vector3(gameObj.transform.localPosition.x, startingY);
-            startingY -= FixedOffset;
             
+            message.Object = gameObj;
+
+            message.RectTransform = gameObj.GetComponent<RectTransform>();
+
             message.Text = gameObj.GetComponent<TMP_Text>();
             message.Text.SetText(message.RawText);
             message.Text.alignment = leftSide
                 ? TextAlignmentOptions.Left
                 : TextAlignmentOptions.Right;
-
-            message.Object = gameObj;
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        var distanceToApply = ScrollUnitsPerSecond * Time.deltaTime;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        var input = Input.GetAxis("Vertical");
+        
         var yVal = transform.localPosition.y;
-        yVal += distanceToApply * Input.GetAxis("Vertical");
+
+        var corners = new Vector3[4];
+        _myRect.GetWorldCorners(corners);
+        var yBottom = corners.Select(c => c.y).Min();
+        var yTop = corners.Select(c => c.y).Max();
+        //Debug.LogFormat("y pos: {0} bot: {1} y top: {2}; in: {3}", yVal, yBottom, yTop, input);
+        
+        var distanceToApply = input * ScrollUnitsPerSecond * Time.deltaTime;
+
+        if (input > 0 && yBottom > 0) { return; }
+        if (input < 0 && yTop < FixedOffset) { return; }
+
+        yVal += distanceToApply;
+        
         transform.localPosition = new Vector3(transform.localPosition.x, yVal);
     }
 }

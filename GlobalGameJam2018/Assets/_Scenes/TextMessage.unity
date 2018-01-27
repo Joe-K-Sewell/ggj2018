@@ -265,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1041737918}
   - component: {fileID: 1041737919}
+  - component: {fileID: 1041737920}
   m_Layer: 0
   m_Name: TextSpawner
   m_TagString: Untagged
@@ -278,7 +279,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041737917}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -304,7 +305,35 @@ MonoBehaviour:
   TextMessagePrefab: {fileID: 1907425687232270, guid: 6273c39064282c34fbfa1e475e9bf6e2,
     type: 2}
   FixedOffset: 150
+  ScrollUnitsPerSecond: 1000
   ConversationScript: {fileID: 4900000, guid: f87e6ae0212781344be96730bed9b5f7, type: 3}
+  MinAllowedY: -5000
+  MaxAllowedY: 5000
+--- !u!61 &1041737920
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1041737917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2135954909
 GameObject:
   m_ObjectHideFlags: 0
