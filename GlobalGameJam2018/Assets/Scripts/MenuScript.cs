@@ -20,6 +20,8 @@ public class MenuScript : MonoBehaviour {
 	void Start () {
         _textComponent = TextObject.GetComponent<TMPro.TMP_Text>();
         _cursorComponent = CursorObject.GetComponent<UnityEngine.UI.Image>();
+
+        UpdateForIndex();
 	}
 	
 	// Update is called once per frame
@@ -45,7 +47,12 @@ public class MenuScript : MonoBehaviour {
         if (_index < 0) { _index += Labels.Length; }
         if (_index >= Labels.Length) { _index -= Labels.Length; }
 
+        UpdateForIndex();
+	}
+
+    private void UpdateForIndex()
+    {
         _textComponent.text = Labels[_index];
         _cursorComponent.transform.position = Locations[_index];
-	}
+    }
 }
