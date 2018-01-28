@@ -26,11 +26,11 @@ public class MenuScript : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _index = (_index - 1) % Labels.Length;
+            _index--;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            _index = (_index + 1) % Labels.Length;
+            _index++;
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -41,6 +41,9 @@ public class MenuScript : MonoBehaviour {
         {
             return;
         }
+        
+        if (_index < 0) { _index += Labels.Length; }
+        if (_index >= Labels.Length) { _index -= Labels.Length; }
 
         _textComponent.text = Labels[_index];
         _cursorComponent.transform.position = Locations[_index];

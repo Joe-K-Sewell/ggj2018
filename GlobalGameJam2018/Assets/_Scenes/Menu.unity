@@ -288,7 +288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000036239577, y: -0.000005722}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1806.5, y: 768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979035767
@@ -439,11 +439,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671e45a0aeb192e4097a23b60d345264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Labels: []
-  Locations: []
-  Scenes: []
-  TextObject: {fileID: 0}
-  CursorObject: {fileID: 0}
+  Labels:
+  - X's Phone
+  - Y's Laptop
+  - Z's Tablet
+  Locations:
+  - {x: 100, y: 200}
+  - {x: 300, y: 200}
+  - {x: 500, y: 200}
+  Scenes:
+  - Shooter
+  - Minigame
+  - MatchingGame
+  TextObject: {fileID: 1548745581}
+  CursorObject: {fileID: 1903013135}
 --- !u!1 &1548745581
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,11 +636,11 @@ RectTransform:
   m_Father: {fileID: 1077018533}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417, y: 205}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1903013137
 MonoBehaviour:
   m_ObjectHideFlags: 0
