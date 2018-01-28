@@ -6,19 +6,19 @@
 //		:						- colon separator
 //		the line
 
-L, mom: As I was saying...
-L, mom: Are you a real villain?
-R, daughter: Well, technically, uh, nah.
-L, mom: Have you ever caught a good guy like a, like a real superhero?
+L, m: As I was saying...
+L, m: Are you a real villain?
+R, p: Well, technically, uh, nah.
+L, m: Have you ever caught a good guy like a, like a real superhero?
 
-R, daughter: Nah.
+R, p: Nah.
 
-R, son: *shakes head*
+R, a: *shakes head*
 
-L, mom: Have you ever tried a disguise?
+L, m: Have you ever tried a disguise?
 
-R, son: *shakes head again*
+R, a: *shakes head again*
 
-R, daughter: Nah, nah...
+R, p: Nah, nah...
 
-L, mom: Alright: I can see, that I will have to teach you, how to be villains!
+L, m: Alright: I can see, that I will have to teach you, how to be villains!
