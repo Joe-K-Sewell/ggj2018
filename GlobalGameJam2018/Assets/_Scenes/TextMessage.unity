@@ -309,7 +309,10 @@ MonoBehaviour:
   - mom
   - daughter
   - son
-  CharacterDisplayNames: []
+  CharacterDisplayNames:
+  - Mother's Name
+  - Daughter's Name
+  - Son's Name
   CharacterProfileImages:
   - {fileID: 21300000, guid: b530f2f01c0ab564797ea3d57f9e01ae, type: 3}
   - {fileID: 21300000, guid: 3e620453d54982a4792d0b0884908d86, type: 3}

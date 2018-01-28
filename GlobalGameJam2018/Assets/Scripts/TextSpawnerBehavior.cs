@@ -81,7 +81,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
             {
                 Side = side,
                 CharacterIndex = characterNameIndex,
-                RawText = body
+                RawText = body + string.Format("\n<size=50%>{0}</size>", CharacterDisplayNames[characterNameIndex])
             });
         }
     }
