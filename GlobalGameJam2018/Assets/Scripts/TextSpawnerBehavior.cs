@@ -94,9 +94,9 @@ public class TextSpawnerBehavior : MonoBehaviour {
         var parentCanvasRect = GetComponentInParent<RectTransform>();
 
         _myRect = GetComponent<RectTransform>();
-        _myRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, _messages.Count * YBetweenEntries);
+        _myRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, _messages.Count * YBetweenEntries + YFromBottom);
 
-        var startingY = 0f;
+        var startingY = YFromBottom;
         for (int i = _messages.Count - 1; i >= 0; i--)
         {
             var message = _messages[i];
@@ -133,8 +133,14 @@ public class TextSpawnerBehavior : MonoBehaviour {
         
         var distanceToApply = input * ScrollUnitsPerSecond * Time.deltaTime;
 
-        if (input > 0 && yBottom > YFromBottom) { return; }
-        if (input < 0 && yTop < (YFromBottom + YBetweenEntries)) { return; }
+        if (input > 0 && yBottom > 0)
+        {
+            return;
+        }
+        if (input < 0 && yTop < YBetweenEntries + YFromBottom)
+        {
+            return;
+        }
 
         yVal += distanceToApply;
         
