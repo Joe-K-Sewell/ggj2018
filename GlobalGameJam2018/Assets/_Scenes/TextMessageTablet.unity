@@ -453,11 +453,11 @@ MonoBehaviour:
   - {fileID: 21300024, guid: d76657c34a233d844b38894ad395358e, type: 3}
   - {fileID: 21300000, guid: d76657c34a233d844b38894ad395358e, type: 3}
   - {fileID: 21300002, guid: d76657c34a233d844b38894ad395358e, type: 3}
-  XOffset: 820
+  XOffset: 630
   YBetweenEntries: 300
-  YFromBottom: 300
+  YFromBottom: 250
   ScrollUnitsPerSecond: 2000
-  ConversationScript: {fileID: 4900000, guid: 322fe8e3b56422d4d9e47d43392479aa, type: 3}
+  ConversationScript: {fileID: 4900000, guid: 98b8b4f3aa80d144d8475161d6dabe0b, type: 3}
 --- !u!61 &1041737920
 BoxCollider2D:
   m_ObjectHideFlags: 0
