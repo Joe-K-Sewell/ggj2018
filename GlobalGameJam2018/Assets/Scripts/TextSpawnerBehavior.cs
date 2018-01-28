@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEditor;
 
 public class TextSpawnerBehavior : MonoBehaviour {
     
@@ -41,8 +40,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
         _messages = new List<TextMessageInfo>();
 
-        var filename = string.Format("Assets/Resources/{0}.txt", GameManager.Instance.ConversationScript);
-        var asset = (TextAsset) AssetDatabase.LoadAssetAtPath(filename, typeof(TextAsset));
+        var filename = string.Format("{0}", GameManager.Instance.ConversationScript);
+        var asset = (TextAsset) Resources.Load(filename, typeof(TextAsset));
 
         foreach (var line in asset.text.Split('\n'))
         {
