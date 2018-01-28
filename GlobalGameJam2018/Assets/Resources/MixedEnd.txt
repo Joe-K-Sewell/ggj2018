@@ -1,0 +1,9 @@
+// Mixed Ending
+// (phone perspective)
+
+L, m: Congratulations on making it into college, Ash. I know you’ll be in good hands at the same school as Parker. 
+L, a: Yeah, I’m sure I will. Good luck with your job Mom. I’m not happy about it but if you really want to do this I won’t try to stop you. 
+L, m: Thank you for trying to understand. I know you don’t yet but you will. We’ll talk when I get back, okay? 
+L, a: ok… You have to catch your flight now, right? 
+L, m: Yes, I love you sweetie. Good luck with the rest of school. 
+L, a: Love you.

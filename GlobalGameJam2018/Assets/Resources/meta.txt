@@ -1,0 +1,6 @@
+// Parker: p, Daughter, decoder, phone
+// Lila: m, Mom, bullet hell, laptop
+// Ash: a, Son, shooting, tablet
+
+// Owner is R
+// Rest is L

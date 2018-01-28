@@ -1,0 +1,11 @@
+// First computer convo:
+// (Computer Template)
+
+R, m: Parker can you please convince your brother to actually do his homework for once? 
+L, p: I can try but what makes you think he will listen to me? 
+R, m: It’s more likely than him listening to me at this point. He isn’t talking to me again.
+L, p: I think that he’s still upset about you leaving, mom.
+R, m: Honey, I told you, you can call me Lila now, we’re both adults. 
+L, p: Okay, okay. Regardless, you need to tell him what’s going on. 
+R, m: He’s doing his best. Ash is just a kid.
+L, p: A kid who’s going to college soon. 

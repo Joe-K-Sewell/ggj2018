@@ -1,0 +1,12 @@
+// Good ending
+// (phone perspective)
+
+L, a: Mom and I talked. We’re a little short on money so she’s taking this job because it pays a lot more than her current position, and could potentially pay off most of our loans. I don’t like it, but I get it.
+R, p: I’m so glad you two worked things out. Since she explained the situation, we can both get jobs next semester and help out as well! Mom will only be gone for a few months anyway. 
+L, m: Thank you for taking care of each other for me. I know your college is important but I’m glad you’re getting to spend the next few months together, and then the years after that at college too. 
+L, a: I can’t believe I have to spend all this time with a goth nerd. My street cred will never be the same :P 
+L, a: Seriously though Mom, we’re gonna miss you.
+R, p: It won’t be the same without you, but we’ll be just fine. 
+L, m: I know you will. My flight takes off soon, so I’ll message you both when I land. Be safe, I love you!
+R, p: We love you! Safe travels and good luck with everything. 
+L, a: I can’t wait to see you again. Love you Mom.

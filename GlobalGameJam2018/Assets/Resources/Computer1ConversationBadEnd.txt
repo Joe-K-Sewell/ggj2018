@@ -1,0 +1,6 @@
+// Bad ending:
+// (Computer Template)
+
+R, m: She’ll be fine.
+L, p: He. 
+R, m: Sorry sweetie, I’m old and forgetful. He’ll be fine.

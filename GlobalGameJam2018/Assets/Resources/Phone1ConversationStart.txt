@@ -1,0 +1,10 @@
+// Phone first convo
+// (Phone Template)
+
+R, p: Bro
+R, p: Brooooooo
+R, p: I can see you on your tablet from here, I know you can see my messages.
+L, a: What
+R, p: We need to talk tonight. 
+L, a: Im not interested. 
+R, p: You’re not getting out of it that easily. 

@@ -1,0 +1,10 @@
+// Good ending:
+// (Computer Template)
+
+R, m: How can I help him? 
+L, p: Well, talking to him more would be a start. We just have to keep working on it, mom.
+L, p: As a family. 
+R, m: I think a good old fashioned game of scrabble would work.
+L, p: You can’t fix all your problems by playing scrabble
+R, m: Watch me. ;-)
+L, p: Just try to talk to him today mom. 

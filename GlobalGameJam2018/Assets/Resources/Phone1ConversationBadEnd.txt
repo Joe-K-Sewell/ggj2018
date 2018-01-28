@@ -1,0 +1,8 @@
+// Bad Ending: 
+// (Phone Template)
+
+L, a: I don’t want to talk. I have plans tonight.
+R, p: Ash we can’t fix this if you won’t even talk to her.
+L, a: What’s there to fix? Mom’s leaving us and now you’re gonna be stuck at home with me. 
+R, p: . . .
+L, a: Don’t answer that. It won’t make a difference

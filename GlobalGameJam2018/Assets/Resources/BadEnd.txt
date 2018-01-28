@@ -1,0 +1,12 @@
+// Bad Ending: 
+// (phone perspective)
+
+L, m: Your brother made it clear that he doesn’t want me here right now. I’m going to take the job and after a few months there we can see where everything’s at.
+R, p: He’ll come around. I know he just doesn’t understand yet. 
+L, m: Maybe.. I’m sorry you can’t go back to school this semester. If only he had gotten his grades up...
+R, p: I wish he had made it into my school, but I don’t mind taking a year off for family. It isn’t like I have much choice. I’ll get a job at home and work on paying off some of my student loans. 
+L, m: Thank you, I know it will be worth it. Then I guess we’ll see where it goes from there, if Ash wants to talk to me.
+R, p: He will, I’m sure of it.
+L, m: My flight is taking off soon, so I’m going to have to say goodbye. Give my love to Ash.
+R, p: Stay safe. Love you.
+L, m: I love you too Parker. 

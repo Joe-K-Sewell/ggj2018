@@ -1,0 +1,7 @@
+// Good Ending:
+// (Phone Template)
+
+L, a: …
+L, a: If mom really wants to fix things I’ll try too....
+R, p: Really? Thank you, bro. You and mom are the two most important people in my life and We all really only have each other. I know we can make everything right. 
+L, a: Of course sis. It’s going to get better.

@@ -1,0 +1,11 @@
+// Second Computer Convo:
+// (computer template)
+
+R, m: Where is Parker?
+L, a: No idea. Out.
+R, m: ok.
+R, m: Ash I thought we had moved past this. Why are you still mad at me? 
+L, a: Im not mad. Why would i be mad?
+R, m: You’re mad.
+L, a: Fine. You’re leaving me and Parker to go do some job for like a year. You’re making Parker drop out of college to take care of me. And now you want to fix it with a few words?
+R, m: It isn’t like that.
