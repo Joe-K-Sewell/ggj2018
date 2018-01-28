@@ -35,8 +35,8 @@ public class ShooterGame : MonoBehaviour {
 		Debug.Log ("end game");
 		yield return new WaitForSecondsRealtime (3);
 		Debug.Log ("load scene");
-		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
-		yield return 0;
+        GameManager.Instance.NavigateFromMinigame(true);
+        yield return 0;
 	}
 
 	public void GameOver () {

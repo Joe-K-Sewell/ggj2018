@@ -37,6 +37,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
     private void ReadConversationScript()
     {
+        Time.timeScale = 1;
+
         _messages = new List<TextMessageInfo>();
 
         var filename = string.Format("Assets/Resources/{0}.txt", GameManager.Instance.ConversationScript);

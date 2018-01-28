@@ -50,8 +50,8 @@ public class MessageGame : MonoBehaviour {
 	IEnumerator EndGame () {
 		canvas.SetActive (false);
 		yield return new WaitForSecondsRealtime (3);
-		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
-		yield return 0;
+        GameManager.Instance.NavigateFromMinigame(true);
+        yield return 0;
 	}
 
 	// fills the containers with empty text components

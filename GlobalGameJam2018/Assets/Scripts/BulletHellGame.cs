@@ -37,7 +37,7 @@ public class BulletHellGame : MonoBehaviour {
 		Debug.Log ("end game");
 		yield return new WaitForSecondsRealtime (3);
 		Debug.Log ("load scene");
-		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        GameManager.Instance.NavigateFromMinigame(true);
 		yield return 0;
 	}
 

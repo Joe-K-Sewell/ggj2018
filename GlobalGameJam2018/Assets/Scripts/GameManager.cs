@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
 
     public string ConversationScript;
     public bool TabletToParker;
+    public Device? NextDevice = null;
 
     public void NavigateFromStart()
     {
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour {
         if (ConversationScript.EndsWith("End"))
         {
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+            NextDevice = null;
+            return;
         }
 
         switch (ConversationScript)
@@ -101,10 +104,26 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        ConversationScript = string.Format("{0}{1}ConversationStart", selectedDevice, timesToThisDevice + 1);
+        timesToThisDevice++;
+        timesEntered[selectedDevice] = timesToThisDevice;
 
+        ConversationScript = string.Format("{0}{1}ConversationStart", selectedDevice, timesToThisDevice);
+
+        NextDevice = selectedDevice;
+        ToDevice();
+    }
+
+    public void NavigateFromMinigame(bool won)
+    {
+        var kind = won ? "Good" : "Bad";
+        ConversationScript = ConversationScript.Replace("ConversationStart", "Conversation" + kind + "End");
+        ToDevice();
+    }
+
+    private void ToDevice()
+    {
         string sceneName;
-        switch (selectedDevice)
+        switch (NextDevice)
         {
             case Device.Phone:
                 sceneName = "TextMessagePhone";
@@ -119,10 +138,5 @@ public class GameManager : MonoBehaviour {
                 throw new System.Exception("Unrecognized device");
         }
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-    }
-
-    public void NavigateFromMinigame()
-    {
-
     }
 }
