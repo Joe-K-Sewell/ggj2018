@@ -15,6 +15,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
     public float XOffset;
     public float YBetweenEntries;
+    public float YFromBottom;
     public float ScrollUnitsPerSecond;
     public TextAsset ConversationScript;
     
@@ -132,8 +133,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
         
         var distanceToApply = input * ScrollUnitsPerSecond * Time.deltaTime;
 
-        if (input > 0 && yBottom > 0) { return; }
-        if (input < 0 && yTop < YBetweenEntries) { return; }
+        if (input > 0 && yBottom > YFromBottom) { return; }
+        if (input < 0 && yTop < (YFromBottom + YBetweenEntries)) { return; }
 
         yVal += distanceToApply;
         
