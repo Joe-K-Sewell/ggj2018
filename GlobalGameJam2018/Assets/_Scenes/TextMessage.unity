@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0a1c03c2c7ae6448e81382b828b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConversationScript: {fileID: 4900000, guid: 10979f193598ea74eb06674254740d42, type: 3}
   LeftPrefab: {fileID: 1561693616851138, guid: d639244ac6dcfe246b6a04b2a1e330ed, type: 2}
   RightPrefab: {fileID: 1943022278701878, guid: 93b243684590b9e44966f4ef0ba435f8,
     type: 2}
@@ -457,7 +458,6 @@ MonoBehaviour:
   YBetweenEntries: 300
   YFromBottom: 300
   ScrollUnitsPerSecond: 2000
-  ConversationScript: {fileID: 4900000, guid: 322fe8e3b56422d4d9e47d43392479aa, type: 3}
 --- !u!61 &1041737920
 BoxCollider2D:
   m_ObjectHideFlags: 0
