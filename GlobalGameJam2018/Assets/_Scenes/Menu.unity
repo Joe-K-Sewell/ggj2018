@@ -448,8 +448,8 @@ MonoBehaviour:
   - {x: 954, y: 639}
   - {x: 1380, y: 658}
   Scenes:
-  - Shooter
-  - Bullet Hell
+  - ShooterMinigame
+  - Bullet HellMinigame
   - MatchingGame
   TextObject: {fileID: 1548745581}
   CursorObject: {fileID: 1903013135}

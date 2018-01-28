@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_Scenes/Title.unity
+    guid: 716dcddeac813b14d8120fb5ad325b88
+  - enabled: 1
+    path: Assets/_Scenes/Intro.unity
+    guid: 06c188c2fa9397741bb96beb7fa1d80f
+  - enabled: 1
     path: Assets/_Scenes/Menu.unity
     guid: ee2107b827c279b4f8f49ac26b592eec
   - enabled: 1
@@ -15,8 +21,11 @@ EditorBuildSettings:
     path: Assets/_Scenes/MatchingGame.unity
     guid: edc41169c37695642a07082526dc2ed0
   - enabled: 1
-    path: Assets/_Scenes/Shooter.unity
-    guid: f0c643f2620894442867c0c3e014105b
+    path: Assets/_Scenes/Bullet HellMinigame.unity
+    guid: 9518e0da76f88634da8bc778cd392ecb
   - enabled: 1
-    path: Assets/_Scenes/Bullet Hell.unity
-    guid: 997e35a678d7d4d4e948c6af4e527b45
+    path: Assets/_Scenes/ShooterMinigame.unity
+    guid: 28cd987c41b9ed641afe24265227f89d
+  - enabled: 1
+    path: Assets/_Scenes/Credits.unity
+    guid: 7480ec1574812c24b9c6b97aac204ba4
