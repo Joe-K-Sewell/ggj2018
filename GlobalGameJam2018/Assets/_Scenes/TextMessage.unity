@@ -305,7 +305,8 @@ MonoBehaviour:
   LeftPrefab: {fileID: 1561693616851138, guid: d639244ac6dcfe246b6a04b2a1e330ed, type: 2}
   RightPrefab: {fileID: 1943022278701878, guid: 93b243684590b9e44966f4ef0ba435f8,
     type: 2}
-  FixedOffset: 250
+  XOffset: 800
+  YBetweenEntries: 250
   ScrollUnitsPerSecond: 2000
   ConversationScript: {fileID: 4900000, guid: f87e6ae0212781344be96730bed9b5f7, type: 3}
 --- !u!61 &1041737920

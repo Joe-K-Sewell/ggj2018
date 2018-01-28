@@ -9,8 +9,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
 
-    public float StartingX;
-    public float FixedOffset;
+    public float XOffset;
+    public float YBetweenEntries;
     public float ScrollUnitsPerSecond;
     public TextAsset ConversationScript;
     
@@ -69,19 +69,19 @@ public class TextSpawnerBehavior : MonoBehaviour {
         var parentCanvasRect = GetComponentInParent<RectTransform>();
 
         _myRect = GetComponent<RectTransform>();
-        _myRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, _messages.Count * FixedOffset);
+        _myRect.sizeDelta = new Vector2(parentCanvasRect.sizeDelta.x, _messages.Count * YBetweenEntries);
 
         var startingY = 0f;
         for (int i = _messages.Count - 1; i >= 0; i--)
         {
             var message = _messages[i];
 
-            startingY += FixedOffset;
+            startingY += YBetweenEntries;
 
             var gameObj = Instantiate(message.Side == Side.LEFT ? LeftPrefab : RightPrefab);
             gameObj.transform.SetParent(gameObject.transform);
             
-            gameObj.transform.position = new Vector3(StartingX, startingY);
+            gameObj.transform.position = new Vector3(XOffset, startingY);
             
             message.Object = gameObj;
 
@@ -107,7 +107,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
         var distanceToApply = input * ScrollUnitsPerSecond * Time.deltaTime;
 
         if (input > 0 && yBottom > 0) { return; }
-        if (input < 0 && yTop < FixedOffset) { return; }
+        if (input < 0 && yTop < YBetweenEntries) { return; }
 
         yVal += distanceToApply;
         
