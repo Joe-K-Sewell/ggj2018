@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
 	public static Player Instance;
 	public Slider healthSlider;
+    public bool bulletHell;
 
 	int startingHealth = 100;
 	int currentHealth;
@@ -29,8 +30,14 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die() {
-		ShooterGame.Instance.GameOver ();
-		BulletHellGame.Instance.GameOver ();
+        if (bulletHell)
+        {
+            BulletHellGame.Instance.GameOver();
+        }
+        else
+        {
+            ShooterGame.Instance.GameOver();
+        }
 		Destroy (gameObject);
 	}
 
