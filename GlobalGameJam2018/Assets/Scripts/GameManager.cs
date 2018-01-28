@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public int numTablet = 0;
 
 	public float score = 0;
+	public float lastScore = 0;
 
 	// Use this for initialization
 	void Awake () {

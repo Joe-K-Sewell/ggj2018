@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MessageGame : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class MessageGame : MonoBehaviour {
 	public GameObject text;
 	public GameObject panel;
 	public GameObject prompt;
+	public GameObject canvas;
 
 	public int msgLength = 10;
 
@@ -24,6 +26,8 @@ public class MessageGame : MonoBehaviour {
 	int currentMsgPosition = 0;
 	int currentInputPosition = 0;
 
+	float numCorrect = 0;
+	float numAttempt = 0;
 	float msgInterval = 0.4f;
 
 	// Use this for initialization
@@ -32,6 +36,22 @@ public class MessageGame : MonoBehaviour {
 		Instance = this;
 		GenerateMessage ();
 		FillContainers ();
+	}
+
+	void GameOver () {
+		Debug.Log ("Game Over");
+		Debug.Log (numCorrect);
+		float score = (numCorrect / numAttempt) * 100;
+		Debug.Log (score);
+		GameManager.Instance.score += score;
+		StartCoroutine (EndGame ());
+	}
+
+	IEnumerator EndGame () {
+		canvas.SetActive (false);
+		yield return new WaitForSecondsRealtime (3);
+		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+		yield return 0;
 	}
 
 	// fills the containers with empty text components
@@ -54,16 +74,16 @@ public class MessageGame : MonoBehaviour {
 
 		StartCoroutine (EraseMessage());
 		for (int i = 0; i <= msgPosition; i++) {
-			yield return new WaitForSeconds (msgInterval);
+			yield return new WaitForSecondsRealtime (msgInterval);
 			messageContainer.transform.GetChild (i).GetComponentInChildren<Text>().text = message[i].ToString();
 		}
 	}
 
 	// erases all the text components in the message boxes
 	IEnumerator EraseMessage() {
-		yield return new WaitForSeconds (0.5f + (msgLength*.08f));
+		yield return new WaitForSecondsRealtime (0.5f + (msgLength*.08f));
 		for (int i = 0; i <= currentMsgPosition; i++) {
-			yield return new WaitForSeconds (msgInterval);
+			yield return new WaitForSecondsRealtime (msgInterval);
 			messageContainer.transform.GetChild (i).GetComponentInChildren<Text> ().text = "";
 		}
 
@@ -86,13 +106,19 @@ public class MessageGame : MonoBehaviour {
 
 	// clears all the input strings
 	IEnumerator ClearInput () {
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSecondsRealtime (1);
 		for (int i = 0; i < inputContainer.transform.childCount; i++) {
 			inputContainer.transform.GetChild (i).GetComponentInChildren<Text>().text = "";
 			inputContainer.transform.GetChild (i).GetComponent<Image>().color = new Color(0,0,0,0);
 		}
-		yield return new WaitForSeconds(2);
-		StartCoroutine(DisplayMessage (currentMsgPosition));
+		yield return new WaitForSecondsRealtime(2);
+		if (currentMsgPosition == msgLength) {
+			Debug.Log ("done");
+			GameOver ();
+		} else {
+			Debug.Log ("not done");
+			StartCoroutine(DisplayMessage (currentMsgPosition));
+		}
 		yield break;
 	}
 
@@ -108,7 +134,8 @@ public class MessageGame : MonoBehaviour {
 
 	IEnumerator StartGame () {
 		SetPrompt ("Get Ready!!");
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSecondsRealtime (2);
+		//yield return new WaitForSeconds (2);
 		StartCoroutine(DisplayMessage (currentMsgPosition));
 	}
 
@@ -118,10 +145,12 @@ public class MessageGame : MonoBehaviour {
 			if (inputContainer.transform.GetChild(i).GetComponentInChildren<Text>().text == message[i].ToString() ) {
 				// correct, mark box green
 				inputContainer.transform.GetChild (i).GetComponent<Image>().color = Color.green;
+				numCorrect++;
 			} else {
 				// false, mark box red
 				inputContainer.transform.GetChild (i).GetComponent<Image>().color = Color.red;
 			}
+			numAttempt++;
 		}
 	}
 

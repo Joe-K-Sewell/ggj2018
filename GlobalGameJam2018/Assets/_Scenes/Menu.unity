@@ -440,13 +440,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Labels:
-  - X's Phone
-  - Y's Laptop
-  - Z's Tablet
+  - Parkers's Phone
+  - Lila's Laptop
+  - Ash's Tablet
   Locations:
-  - {x: 278, y: 704}
-  - {x: 954, y: 639}
-  - {x: 1380, y: 658}
+  - {x: 245, y: 680}
+  - {x: 920, y: 610}
+  - {x: 1350, y: 640}
   Scenes:
   - ShooterMinigame
   - Bullet HellMinigame
@@ -486,7 +486,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 107.9}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1548745583
 MonoBehaviour:
@@ -509,8 +509,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Label Text Here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 059f455714d6f274eb75c4665aab8c6b, type: 2}
+  m_sharedMaterial: {fileID: 21932869237772924, guid: 059f455714d6f274eb75c4665aab8c6b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -534,8 +535,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -639,7 +640,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1380, y: 658}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1903013137
 MonoBehaviour:
@@ -660,7 +661,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: dc6ea5dfd6f50e24f82d94bdf93cea33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f61b23380a19fb348b73b322d2288966, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
