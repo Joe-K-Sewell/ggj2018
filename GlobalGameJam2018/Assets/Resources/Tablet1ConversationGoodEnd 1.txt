@@ -1,9 +1,0 @@
-// Good ending:
-// (Tablet Template 1 - Ash to Mom)
-
-L, m: Ash, you know how important this is to me.
-R, a: it just seems like you prioritize it more than you prioritize us.
-L, m: there shouldn’t be a you or an us. We’re a team.
-R, a: You’re right. sorry I overreacted earlier
-L, m: This has been a long week for all of us.
-L, m: We can work together on pulling up your grades, okay Ash? Remember we’re always here for you. :-)

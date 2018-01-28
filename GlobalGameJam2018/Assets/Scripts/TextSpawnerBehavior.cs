@@ -3,10 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEditor;
 
 public class TextSpawnerBehavior : MonoBehaviour {
-
-    public TextAsset ConversationScript;
     
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
@@ -39,8 +38,11 @@ public class TextSpawnerBehavior : MonoBehaviour {
     private void ReadConversationScript()
     {
         _messages = new List<TextMessageInfo>();
-        
-        foreach (var line in ConversationScript.text.Split('\n'))
+
+        var filename = string.Format("Assets/Resources/{0}.txt", GameManager.Instance.ConversationScript);
+        var asset = (TextAsset) AssetDatabase.LoadAssetAtPath(filename, typeof(TextAsset));
+
+        foreach (var line in asset.text.Split('\n'))
         {
             var cleanedLine = line.TrimEnd(' ', '\r');
             if (string.IsNullOrEmpty(cleanedLine)) { continue; }
@@ -124,6 +126,12 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.NavigateFromDevice();
+            return;
+        }
+
         var input = Input.GetAxis("Vertical");
         
         var yVal = transform.localPosition.y;

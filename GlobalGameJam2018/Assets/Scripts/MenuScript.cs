@@ -36,7 +36,7 @@ public class MenuScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes[_index]);
+            GameManager.Instance.NavigateFromMenu((GameManager.Device) _index);
             return;
         }
         else

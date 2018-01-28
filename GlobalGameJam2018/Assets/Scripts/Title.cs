@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class Title : MonoBehaviour {
 
 	public void onStart () {
-		SceneManager.LoadScene("Menu", LoadSceneMode.Single);
-	}
+        GameManager.Instance.NavigateFromStart();	}
 
 	public void onCredits () {
 		SceneManager.LoadScene("Credits", LoadSceneMode.Single);
