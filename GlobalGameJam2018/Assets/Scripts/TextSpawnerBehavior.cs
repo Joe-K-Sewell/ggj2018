@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class TextSpawnerBehavior : MonoBehaviour {
 
-    public GameObject TextMessagePrefab;
+    public GameObject LeftPrefab;
+    public GameObject RightPrefab;
+
     public float FixedOffset;
     public float ScrollUnitsPerSecond;
     public TextAsset ConversationScript;
@@ -72,23 +74,21 @@ public class TextSpawnerBehavior : MonoBehaviour {
         for (int i = _messages.Count - 1; i >= 0; i--)
         {
             var message = _messages[i];
-            var leftSide = message.Side == Side.LEFT;
 
             startingY += FixedOffset;
 
-            var gameObj = Instantiate(TextMessagePrefab);
+            var gameObj = Instantiate(message.Side == Side.LEFT ? LeftPrefab : RightPrefab);
             gameObj.transform.SetParent(gameObject.transform);
-            gameObj.transform.localPosition = new Vector3(gameObj.transform.localPosition.x, startingY);
+
+            var startingX = gameObj.transform.localPosition.x;
+            gameObj.transform.localPosition = new Vector3(startingX, startingY);
             
             message.Object = gameObj;
 
             message.RectTransform = gameObj.GetComponent<RectTransform>();
 
-            message.Text = gameObj.GetComponent<TMP_Text>();
+            message.Text = gameObj.GetComponentInChildren<TMP_Text>();
             message.Text.SetText(message.RawText);
-            message.Text.alignment = leftSide
-                ? TextAlignmentOptions.Left
-                : TextAlignmentOptions.Right;
         }
     }
 
