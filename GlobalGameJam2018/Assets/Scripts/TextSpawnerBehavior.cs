@@ -9,6 +9,9 @@ public class TextSpawnerBehavior : MonoBehaviour {
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
 
+    public string[] CharacterNames;
+    public Sprite[] CharacterProfileImages;
+
     public float XOffset;
     public float YBetweenEntries;
     public float ScrollUnitsPerSecond;
@@ -18,10 +21,12 @@ public class TextSpawnerBehavior : MonoBehaviour {
     private class TextMessageInfo
     {
         public Side Side;
+        public int CharacterIndex;
         public string RawText;
         public GameObject Object;
         public RectTransform RectTransform;
         public TMP_Text Text;
+        public UnityEngine.UI.Image Image;
     }
     
     private List<TextMessageInfo> _messages;
@@ -36,27 +41,45 @@ public class TextSpawnerBehavior : MonoBehaviour {
         {
             var cleanedLine = line.TrimEnd(' ', '\r');
             if (string.IsNullOrEmpty(cleanedLine)) { continue; }
-
+            if (cleanedLine.StartsWith("//")) { continue; }
+                
             var firstColon = cleanedLine.IndexOf(':');
             var header = cleanedLine.Substring(0, firstColon).TrimEnd(' ');
-            var body = cleanedLine.Substring(firstColon + 1).TrimStart(' ');
 
+            var headerSplits = header.Split(',');
+            
             Side side;
-            switch (header[0])
+            switch (headerSplits[0].Trim())
             {
-                case 'L':
+                case "L":
                     side = Side.LEFT;
                     break;
-                case 'R':
+                case "R":
                     side = Side.RIGHT;
                     break;
                 default:
-                    throw new System.Exception("Unrecognized: " + header[0]);
+                    throw new System.Exception("Unrecognized side, expected L or R: " + headerSplits[0]);
             }
 
+            var characterName = headerSplits[1].Trim();
+            var characterNameIndex = -1;
+            for (int i = 0; i < CharacterNames.Length; i++)
+            {
+                if (characterName.Equals(CharacterNames[i]))
+                {
+                    characterNameIndex = i;
+                }
+            }
+            if (characterNameIndex == -1)
+            {
+                throw new System.Exception("Unrecognized character name: " + characterName);
+            }
+
+            var body = cleanedLine.Substring(firstColon + 1).TrimStart(' ');
             _messages.Add(new TextMessageInfo
             {
                 Side = side,
+                CharacterIndex = characterNameIndex,
                 RawText = body
             });
         }
@@ -80,7 +103,6 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
             var gameObj = Instantiate(message.Side == Side.LEFT ? LeftPrefab : RightPrefab);
             gameObj.transform.SetParent(gameObject.transform);
-            
             gameObj.transform.position = new Vector3(XOffset, startingY);
             
             message.Object = gameObj;
@@ -89,6 +111,9 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
             message.Text = gameObj.GetComponentInChildren<TMP_Text>();
             message.Text.SetText(message.RawText);
+
+            message.Image = gameObj.GetComponentInChildren<UnityEngine.UI.Image>();
+            message.Image.sprite = CharacterProfileImages[message.CharacterIndex];
         }
     }
 

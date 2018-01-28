@@ -1,19 +1,27 @@
-L: As I was saying...
+// Lines are ignored if they begin with two slashes or are empty
+// Otherwise, lines have the form:
+//		L or R					- indicates which side of the screen
+//		,						- comma separator
+//		mom or son or daughter	- indicates speaker
+//		:						- colon separator
+//		the line
 
-L: Are you a real villain?
+L, mom: As I was saying...
 
-R: Well, technically, uh, nah.
+L, mom: Are you a real villain?
 
-L: Have you ever caught a good guy like a, like a real superhero?
+R, daughter: Well, technically, uh, nah.
 
-R: Nah.
+L, mom: Have you ever caught a good guy like a, like a real superhero?
 
-R: *shakes head*
+R, daughter: Nah.
 
-L: Have you ever tried a disguise?
+R, son: *shakes head*
 
-R: *shakes head again*
+L, mom: Have you ever tried a disguise?
 
-R: Nah, nah...
+R, son: *shakes head again*
 
-L: Alright: I can see, that I will have to teach you, how to be villains!
+R, daughter: Nah, nah...
+
+L, mom: Alright: I can see, that I will have to teach you, how to be villains!
