@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour {
 	{
 		if (currentHealth <= 0) 
 		{
+			ShooterGame.Instance.GameOver ();
 			Destroy (gameObject);
 		}
 		transform.Rotate (Vector3.forward * Time.deltaTime * 180);

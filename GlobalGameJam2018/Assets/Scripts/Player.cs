@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Die() {
+		ShooterGame.Instance.GameOver ();
 		BulletHellGame.Instance.GameOver ();
 		Destroy (gameObject);
 	}
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.name == "TopWall") 
+		if (col.gameObject.name.Substring(0, 4) == "Fire") 
 		{
 			//Debug.Log ("Hello");
 			TakeDamage (10);
