@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TextSpawnerBehavior : MonoBehaviour {
 
+    public TextAsset ConversationScript;
+    
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
 
@@ -17,7 +19,6 @@ public class TextSpawnerBehavior : MonoBehaviour {
     public float YBetweenEntries;
     public float YFromBottom;
     public float ScrollUnitsPerSecond;
-    public TextAsset ConversationScript;
     
     private enum Side { LEFT, RIGHT }
     private class TextMessageInfo
@@ -117,6 +118,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
             message.Image = gameObj.GetComponentInChildren<UnityEngine.UI.Image>();
             message.Image.sprite = CharacterProfileImages[message.CharacterIndex];
         }
+
+        transform.localPosition = new Vector3(transform.localPosition.x, -1 * (_messages.Count * YBetweenEntries));
     }
 
     // Update is called once per frame
