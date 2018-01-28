@@ -8,13 +8,13 @@ public class PlayerBullet : MonoBehaviour {
 	public int speed = 50;
 	// Use this for initialization
 	void Start () {
-		
+		transform.Rotate (0, 0, 90);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		transform.Translate(speed *Time.deltaTime,0 ,0);
+		transform.Translate(0, -speed *Time.deltaTime ,0);
 		lifeTime -= Time.deltaTime;
 
 		if (lifeTime <= 0) 

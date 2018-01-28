@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour {
 	{
 		currentHealth = startingHealth;
 		healthSlider.value = currentHealth;
-
 	}
 
 	// Update is called once per frame
@@ -25,12 +24,12 @@ public class Enemy : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+		transform.Rotate (Vector3.forward * Time.deltaTime * 180);
 	}
 
 	public void TakeDamage(int dmg)
 	{
 		currentHealth -= dmg;
 		healthSlider.value = currentHealth;
-
 	}
 }

@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance = null;
 
-	int numCell = 0;
-	int numLaptop = 0;
-	int numTablet = 0;
+	public int numCell = 0;
+	public int numLaptop = 0;
+	public int numTablet = 0;
+
+	public float score = 0;
 
 	// Use this for initialization
 	void Awake () {

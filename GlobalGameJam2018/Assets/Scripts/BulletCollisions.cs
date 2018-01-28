@@ -4,25 +4,14 @@ using UnityEngine;
 
 public class BulletCollisions : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		
-		Debug.Log (col.gameObject.name);
+		//Debug.Log (col.gameObject.name);
 		if (col.gameObject.CompareTag("Player"))
-			{
-			FindObjectOfType<Player> ().TakeDamage (10);
-				Destroy(gameObject);
-			}
+		{
+		FindObjectOfType<Player> ().TakeDamage (10);
+			Destroy(gameObject);
+		}
 
 		if (col.gameObject.CompareTag("Enemy"))
 		{

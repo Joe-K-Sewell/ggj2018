@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour {
 			timer -= Time.deltaTime;
 		}
 
-		if (Input.GetKeyDown (KeyCode.F) && timer <= 0) 
+		if (Input.GetKeyDown (KeyCode.Space) && timer <= 0) 
 		{
 			Instantiate (bulletPrefab, bulletSpawn.position, Quaternion.identity, null);
 			timer = timeBetweenShots;

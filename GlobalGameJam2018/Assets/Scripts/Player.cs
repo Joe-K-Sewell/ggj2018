@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+	public static Player Instance;
 	public Slider healthSlider;
 
 	int startingHealth = 100;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		Instance = this;
 		currentHealth = startingHealth;
 		healthSlider.value = currentHealth;
 	}
@@ -22,25 +24,31 @@ public class Player : MonoBehaviour {
 	{
 		if (currentHealth <= 0) 
 		{
-			Destroy (gameObject);
+			Die ();
 		}
-		
+	}
+
+	void Die() {
+		BulletHellGame.Instance.GameOver ();
+		Destroy (gameObject);
 	}
 
 	public void TakeDamage(int dmg)
 	{
 		currentHealth -= dmg;
 		healthSlider.value = currentHealth;
-
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.gameObject.name == "TopWall") 
 		{
-			Debug.Log ("Hello");
+			//Debug.Log ("Hello");
 			TakeDamage (10);
 		}
 	}
 
+	public float GetHealth () {
+		return currentHealth;
+	}
 }
