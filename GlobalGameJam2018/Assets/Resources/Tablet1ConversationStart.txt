@@ -1,0 +1,14 @@
+// 1st Tablet convo
+// (Tablet Template 1 - Ash to Mom)
+
+R, a: my teacher said she wants to meet with you tomorrow… 
+L, m: What about? I have to work. Can’t they meet with me another day?
+R, a: i told her you would be there. 
+L, m: Well I can’t. She will have to be disappointed.
+R, a: she said I would fail if you don’t meet with her. 
+L, m: Are you failing? Ash, I thought you were going to try this semester
+R, a: i am trying. I’m just not succeeding.
+L, m: What are you going to do next semester? I won’t be here to remind you about it.
+R, a: Do you have to go?
+L, m: You know I do. This is what’s best for us Ash.
+R, a: You mean what’s best for you? 
