@@ -9,6 +9,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
     public GameObject LeftPrefab;
     public GameObject RightPrefab;
 
+    public float StartingX;
     public float FixedOffset;
     public float ScrollUnitsPerSecond;
     public TextAsset ConversationScript;
@@ -79,9 +80,8 @@ public class TextSpawnerBehavior : MonoBehaviour {
 
             var gameObj = Instantiate(message.Side == Side.LEFT ? LeftPrefab : RightPrefab);
             gameObj.transform.SetParent(gameObject.transform);
-
-            var startingX = gameObj.transform.localPosition.x;
-            gameObj.transform.localPosition = new Vector3(startingX, startingY);
+            
+            gameObj.transform.position = new Vector3(StartingX, startingY);
             
             message.Object = gameObj;
 
