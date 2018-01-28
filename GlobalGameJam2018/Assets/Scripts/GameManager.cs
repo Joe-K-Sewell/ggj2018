@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour {
     {
         Phone = 0,
         Computer = 1,
-        
         Tablet = 2
     }
 
@@ -71,9 +70,20 @@ public class GameManager : MonoBehaviour {
         }
         if (ConversationScript.EndsWith("End"))
         {
+            if (timesEntered.Values.Min() == 2)
+            {
+                ConversationScript = "GoodEnding";
+                SceneManager.LoadScene("TextMessagePhone");
+                return;
+            }
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
             NextDevice = null;
             return;
+        }
+        if (ConversationScript.EndsWith("Ending"))
+        {
+            SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+            NextDevice = null;
         }
 
         switch (ConversationScript)
