@@ -357,7 +357,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1420, y: 1080}
+  m_SizeDelta: {x: 1300, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713609006
 MonoBehaviour:
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 1287638188}
   - component: {fileID: 1287638187}
   m_Layer: 0
-  m_Name: DesktopBackground
+  m_Name: TabletBackgroundToParker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: eec11060dea4fc64b8ced657f2915797, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3d4040095513a24d914079ce6b26070, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
