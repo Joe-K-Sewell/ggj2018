@@ -10,6 +10,7 @@ public class TextSpawnerBehavior : MonoBehaviour {
     public GameObject RightPrefab;
 
     public string[] CharacterNames;
+    public string[] CharacterDisplayNames;
     public Sprite[] CharacterProfileImages;
 
     public float XOffset;

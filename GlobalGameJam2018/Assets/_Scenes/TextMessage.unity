@@ -305,6 +305,15 @@ MonoBehaviour:
   LeftPrefab: {fileID: 1561693616851138, guid: d639244ac6dcfe246b6a04b2a1e330ed, type: 2}
   RightPrefab: {fileID: 1943022278701878, guid: 93b243684590b9e44966f4ef0ba435f8,
     type: 2}
+  CharacterNames:
+  - mom
+  - daughter
+  - son
+  CharacterDisplayNames: []
+  CharacterProfileImages:
+  - {fileID: 21300000, guid: b530f2f01c0ab564797ea3d57f9e01ae, type: 3}
+  - {fileID: 21300000, guid: 3e620453d54982a4792d0b0884908d86, type: 3}
+  - {fileID: 21300000, guid: 5dd71014d6208424e8f2f3b771c121f2, type: 3}
   XOffset: 800
   YBetweenEntries: 250
   ScrollUnitsPerSecond: 2000
