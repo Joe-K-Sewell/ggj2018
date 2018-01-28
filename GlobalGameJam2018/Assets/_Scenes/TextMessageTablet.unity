@@ -113,6 +113,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39233807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 39233808}
+  - component: {fileID: 39233810}
+  - component: {fileID: 39233809}
+  m_Layer: 0
+  m_Name: TabletBackgroundToMom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &39233808
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39233807}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2135954913}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1420, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &39233809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39233807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: b51b37e3eed399140844e45a259960eb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &39233810
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39233807}
 --- !u!1 &545133625
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0a1c03c2c7ae6448e81382b828b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftPrefab: {fileID: 1561693616851138, guid: d639244ac6dcfe246b6a04b2a1e330ed, type: 2}
+  ConversationScript: {fileID: 4900000, guid: c32fbbddcb682ae4db4d5ac51f5ba279, type: 3}
+  LeftPrefab: {fileID: 1561693616851138, guid: 02a6a4cf3cc934c4ebcbbc47a382555b, type: 2}
   RightPrefab: {fileID: 1943022278701878, guid: 93b243684590b9e44966f4ef0ba435f8,
     type: 2}
   CharacterNames:
@@ -453,11 +522,10 @@ MonoBehaviour:
   - {fileID: 21300024, guid: d76657c34a233d844b38894ad395358e, type: 3}
   - {fileID: 21300000, guid: d76657c34a233d844b38894ad395358e, type: 3}
   - {fileID: 21300002, guid: d76657c34a233d844b38894ad395358e, type: 3}
-  XOffset: 630
+  XOffset: 680
   YBetweenEntries: 300
   YFromBottom: 250
   ScrollUnitsPerSecond: 2000
-  ConversationScript: {fileID: 4900000, guid: 98b8b4f3aa80d144d8475161d6dabe0b, type: 3}
 --- !u!61 &1041737920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -640,6 +708,7 @@ RectTransform:
   - {fileID: 713609005}
   - {fileID: 1041737918}
   - {fileID: 1287638186}
+  - {fileID: 39233808}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

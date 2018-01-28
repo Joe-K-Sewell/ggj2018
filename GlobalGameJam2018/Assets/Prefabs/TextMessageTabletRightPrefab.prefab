@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224098856543036522}
   m_Layer: 0
-  m_Name: TextMessageRightPrefab
+  m_Name: TextMessageTabletRightPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ RectTransform:
   m_GameObject: {fileID: 1943022278701878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 224242977296871180}
   - {fileID: 224244851011893628}
